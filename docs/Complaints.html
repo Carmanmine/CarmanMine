@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жалобы</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+
+    <!--Страница Carman-->
+    <div style="background: black; padding: 10px; border-block-start-width: 3px; border-block-color: blue; border-block-end-width: 3px; border-end-end-radius: 2px;">
+        <center>
+            <h3 style="background: gray; color: aqua;">
+                Страницы сайта
+            </h3>
+        </center>
+        <h2>
+            <button onclick="RedirectToCarman()" style="width: 90px; height: 45px; color: black; background: lime; border-block-color: green; border-block-end-width: 3px; border-end-end-radius: 2px; cursor: pointer;" title="Страница Carman">
+                Carman
+            </button>
+            <script src="js/Redirect_to_Carman.js"></script>
+
+            <!--Страница WipPro-->
+            <button onclick="RedirectToWipPro()" style="width: 90px; height: 45px; color: black; background: lime; border-block-color: green; border-block-end-width: 3px; border-end-end-radius: 2px; cursor: pointer;" title="Страница WipPro">
+                WipPro
+            </button>
+            <script src="js/Redirect_to_WipPro.js"></script>
+
+            <!--Страница Жалобы-->
+            <button onclick="RedirectToComplaints()" style="width: 90px; height: 45px; color: black; background: lime; border-block-color: green; border-block-end-width: 3px; border-end-end-radius: 2px; cursor: pointer;" title="Страница WipPro">
+                Жалобы
+            </button>
+            <script src="js/Redirect_to_complaints.js"></script>
+        </h2>
+    </div>
+
+    <center>
+        <h1>
+            Страница Жалоб
+            <br>
+        </h1>
+        <h1 style="color: red;">
+            Ведите снизу вашу жалобу или отзыв
+        </h1>
+
+        <form id="contact-form">
+            <label for="message"></label><br>
+            <textarea id="message" name="message" rows="5" cols="30" placeholder="Ваша жалоба"></textarea><br><br>
+            <button type="button" onclick="sendEmail()" style="width: 150px; height: 50px; color: black; background: lime; border-block-color: green; border-block-end-width: 3px; border-end-end-radius: 2px;" title="Подтвердить">Подтвердить</button>
+        </form>
+        <script>
+            // Инициализация EmailJS
+            (function () {
+                emailjs.init("cA2srIwJGSqLvgqo5"); // Замените "Ваш_USER_ID" на ваш User ID
+            })();
+
+            // Функция отправки письма
+            function sendEmail() {
+                const message = document.getElementById("message").value;
+
+                // Параметры, которые будут отправлены
+                const templateParams = {
+                    to_name: "Владислав", // Имя получателя (настраиваемое)
+                    message: message, // Сообщение из текстового поля
+                };
+
+                // Отправка письма
+                emailjs.send("service_35vzgqs", "template_m8hkia3", templateParams)
+                    .then(function (response) {
+                        alert("Сообщение успешно отправлено!");
+                    }, function (error) {
+                        alert("Ошибка отправки: " + JSON.stringify(error));
+                    });
+            }
+        </script>
+    </center>
+</body>
+</html>
