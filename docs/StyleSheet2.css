@@ -150,3 +150,12 @@
     border-block-width: 3px;
     color: white;
 }
+
+.Button_color_blue {
+    width: 110px;
+    height: 50px;
+    background: aqua;
+    border-block-color: black;
+    border-block-width: 3px;
+    color: white;
+}
