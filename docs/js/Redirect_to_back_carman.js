@@ -3,5 +3,5 @@
 
 
 function backtocarman() {
-    window.location.href = "Carman.html";
+    window.location.href = "index.html";
 }
